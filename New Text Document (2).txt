@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class SimpleCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int a, b;
+        char op;
+
+        // Read operator
+        System.out.print("Enter the Operator (+, -, *, /, %): ");
+        op = sc.next().charAt(0);
+
+        // Read two numbers
+        System.out.print("Enter the values of a and b: ");
+        a = sc.nextInt();
+        b = sc.nextInt();
+
+        // Perform operation
+        if (op == '+') {
+            System.out.println("Sum = " + (a + b));
+
+        } else if (op == '-') {
+            System.out.println("Difference = " + (a - b));
+
+        } else if (op == '*') {
+            System.out.println("Product = " + (a * b));
+
+        } else if (op == '/') {
+
+            if (b == 0) {
+                System.out.println("Error! Denominator is 0.");
+                return;
+            }
+
+            System.out.printf("Quotient = %.3f%n", (double) a / b);
+
+        } else if (op == '%') {
+
+            if (b == 0) {
+                System.out.println("Error! Denominator is 0.");
+                return;
+            }
+
+            System.out.println("Remainder = " + (a % b));
+
+        } else {
+            System.out.println("Invalid Operator!");
+        }
+
+        sc.close();
+    }
+}
