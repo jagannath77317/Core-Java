@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class ElectricityBill {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        double units, rate = 0, total;
+        String name;
+
+        // Input consumer name
+        System.out.print("Enter Consumer Name: ");
+        name = sc.nextLine();
+
+        // Input units consumed
+        System.out.print("Enter Units Consumed: ");
+        units = sc.nextDouble();
+
+        // Validate input
+        if (units < 0) {
+            System.out.println("Invalid Units!");
+            return;
+        }
+
+        // Calculate electricity charge
+        if (units <= 200) {
+            rate = 0.8 * units;
+        } else if (units <= 300) {
+            rate = (0.8 * 200) + (0.9 * (units - 200));
+        } else {
+            rate = (0.8 * 200) + (0.9 * 100) + (1.0 * (units - 300));
+        }
+
+        // Add fixed charge
+        total = rate + 100;
+
+        // Apply surcharge if total exceeds Rs. 400
+        if (total > 400) {
+            total = total + (0.15 * total);
+        }
+
+        // Display bill details
+        System.out.println("\n----- Electricity Bill -----");
+        System.out.println("Consumer Name : " + name);
+        System.out.println("Units Consumed: " + (int) units);
+        System.out.printf("Bill Amount   : Rs. %.2f%n", total);
+
+        sc.close();
+    }
+}
